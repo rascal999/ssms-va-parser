@@ -88,8 +88,8 @@ def main():
 #  "Status": "Fail",
 ###  "Risk": "Medium",
 ###  "ID": "VA1219",
-###  "Server": "SRVSG001",
-###  "Database": "SIGIA",
+###  "Server": "",
+###  "Database": "",
 #  "Applies to": "database",
 #  "Security Check": "Transparent data encryption should be enabled",
 ###  "Description": "Transparent data encryption (TDE) helps to protect the database files against information disclosure by performing real-time encryption and decryption of the database, associated backups, and transaction log files 'at rest', without requiring changes to the application. This rule checks that TDE is enabled on the database.",
@@ -131,6 +131,7 @@ def main():
         rule_query = issue['Rule Query'],
         expected_result = issue['Expected Result'],
         actual_result = issue['Actual Result'],
+        database = issue['Database'],
         # There must be a better way..
         #cve="        \item \\href{{https://cve.mitre.org/cgi-bin/cvename.cgi?name={0}}}{{{0}}}\n".format("".join(cve for cve in issue['CVE'].split())),
         host=''.join('        \item %s\n' % host for host in issue['Server']),

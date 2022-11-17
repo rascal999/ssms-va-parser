@@ -31,7 +31,7 @@ $synopsis
 \textbf{Affected Target}:
 
     \begin{itemize}
-$host
+$host ($database database)
     \end{itemize}
 
 \noindent
