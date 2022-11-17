@@ -81,8 +81,8 @@ def main():
   # Check / create output directory
   if os.path.exists(parsed.output):
     print("ERROR: Output directory exists, bailing..")
-    #sys.exit(1)
-  #os.mkdir(parsed.output)
+    sys.exit(1)
+  os.mkdir(parsed.output)
 
 #{
 #  "Status": "Fail",
@@ -104,6 +104,8 @@ def main():
 
   # For each issue in dedupe dict
   for issue in dedupe_list:
+    if issue['Status'] != "Fail":
+      continue
     #risk_rating = dedupe_dict[issue]['CVSS v3.0 Base Score']
     #if risk_rating == "":
     #  risk_rating = 0
@@ -113,17 +115,22 @@ def main():
     #  continue
     temp_obj = Template(template_string)
 
+    if issue['Expected Result'] == "":
+      issue['Expected Result'] = "N/A"
+
+    if issue['Actual Result'] == "":
+      issue['Actual Result'] = "N/A"
+
     issue_file = open(parsed.output + "/" + issue['ID'] + ".tex", "w")
     issue_file.write(
       temp_obj.substitute(
         risk=issue['Risk'],
         name=issue['Security Check'].replace("_","\_"),
-        #plugin_output=issue['Plugin Output'],
         synopsis=issue['Description'].replace("_","\_"),
         description=issue['Description'].replace("_","\_"),
-        rule_query = issue['Rule Query'].replace("_","\_"),
-        expected_result = issue['Expected Result'].replace("_","\_"),
-        actual_result = issue['Actual Result'].replace("_","\_"),
+        rule_query = issue['Rule Query'],
+        expected_result = issue['Expected Result'],
+        actual_result = issue['Actual Result'],
         # There must be a better way..
         #cve="        \item \\href{{https://cve.mitre.org/cgi-bin/cvename.cgi?name={0}}}{{{0}}}\n".format("".join(cve for cve in issue['CVE'].split())),
         host=''.join('        \item %s\n' % host for host in issue['Server']),
