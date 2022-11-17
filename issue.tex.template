@@ -1,0 +1,64 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%          Penetration Test Report Template           %
+%                     cyber@cfreg                     %
+%             https://hack.newhaven.edu/              %
+%                                                     %
+%                    Contributors:                    %
+% TJ Balon - https://github.com/balon                 %
+% Samuel Zurowski - https://github.com/samuelzurowski %
+% Charles Barone - https://github.com/CharlesBarone   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Internal Infrastructure: $name}
+\label{sec:creds}
+\noindent
+
+\vulntext{$risk}
+
+\noindent
+
+\color{black}{}
+\textbf{Description}:
+
+$synopsis
+
+%\noindent
+%\textbf{Potential Business Impact}:
+
+%XXX
+
+\noindent
+\textbf{Affected Target}:
+
+    \begin{itemize}
+$host
+    \end{itemize}
+
+\noindent
+\textbf{Exploitation Details}:
+
+    The following query was executed against the target:
+
+    \begin{lstlisting}[language=bash,frame=single,showstringspaces=false]
+$rule_query
+    \end{lstlisting}
+
+    The expected output was:
+    \begin{lstlisting}[language=bash,frame=single,showstringspaces=false]
+$expected_result
+    \end{lstlisting}
+
+    The actual output was:
+    \begin{lstlisting}[language=bash,frame=single,showstringspaces=false]
+$actual_result
+    \end{lstlisting}
+
+\iffalse
+\noindent
+\textbf{Recommendations}:
+
+$solution
+\fi
+
+%\noindent
+\newpage
