@@ -53,12 +53,12 @@ $expected_result
 $actual_result
     \end{lstlisting}
 
-\iffalse
+%\iffalse
 \noindent
 \textbf{Recommendations}:
 
 $solution
-\fi
+%\fi
 
 %\noindent
 \newpage
